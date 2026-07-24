@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Datenschutz | Pilotify UG (haftungsbeschränkt) i.G.</title>
+  <meta name="robots" content="noindex, follow" />
+  <meta name="description" content="Datenschutzerklärung der Pilotify UG (haftungsbeschränkt) i.G." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #12151c;
+      --paper: #ffffff;
+      --paper-2: #f2f6fb;
+      --paper-3: #e9eef7;
+      --cyan: #0891b2;
+      --blue: #2554e0;
+      --violet: #6423c9;
+      --gradient: linear-gradient(120deg, var(--cyan) 0%, var(--blue) 55%, var(--violet) 100%);
+      --steel: #5b6672;
+      --line: rgba(18, 21, 28, 0.10);
+      --radius: 10px;
+      --display: "Poppins", sans-serif;
+      --body: "Inter", sans-serif;
+      --mono: "JetBrains Mono", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--body);
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    .btn:focus-visible {
+      outline: 3px solid var(--blue);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: auto;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 12px 18px;
+      border-radius: 0 0 8px 0;
+      z-index: 100;
+      font-weight: 600;
+    }
+
+    .skip-link:focus {
+      left: 0;
+      top: 0;
+    }
+
+    .gradient-text {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* ---------- topbar ---------- */
+
+    .topbar {
+      background: var(--ink);
+      color: rgba(255,255,255,0.78);
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.05em;
+      padding: 8px 40px;
+    }
+
+    .topbar-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      text-transform: uppercase;
+    }
+
+    /* ---------- header / nav ---------- */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      height: 56px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      font-size: 1.02rem;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      border-bottom: 2px solid transparent;
+      padding-bottom: 3px;
+      transition: border-color .15s ease;
+    }
+
+    .nav-links a:hover {
+      border-color: var(--blue);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 22px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 0.98rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--gradient);
+      color: #fff;
+      box-shadow: 0 10px 26px rgba(47,107,255,0.28);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.06);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline-ink {
+      border-color: var(--ink);
+      color: var(--ink);
+      background: transparent;
+    }
+
+    .btn-outline-ink:hover {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    /* ---------- legal hero ---------- */
+
+    main {
+      background: var(--paper);
+    }
+
+    .legal-hero {
+      position: relative;
+      overflow: hidden;
+      background: var(--paper);
+      color: var(--ink);
+      padding: 96px 40px 72px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .legal-hero::before {
+      content: "";
+      position: absolute;
+      top: -180px;
+      right: -160px;
+      width: 620px;
+      height: 620px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(8,145,178,0.32), transparent 68%);
+      filter: blur(6px);
+      z-index: 0;
+    }
+
+    .legal-hero::after {
+      content: "";
+      position: absolute;
+      bottom: -220px;
+      left: -180px;
+      width: 560px;
+      height: 560px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(100,35,201,0.26), transparent 70%);
+      filter: blur(6px);
+      z-index: 0;
+    }
+
+    .legal-hero-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper-2);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: var(--steel);
+      margin-bottom: 32px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gradient);
+    }
+
+    .legal-hero h1 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      line-height: 1.04;
+      letter-spacing: -1.6px;
+      max-width: 880px;
+      margin-bottom: 26px;
+    }
+
+    .legal-hero p.lead {
+      font-size: 1.15rem;
+      color: var(--steel);
+      max-width: 720px;
+    }
+
+    /* ---------- legal content ---------- */
+
+    .legal-content {
+      padding: 96px 40px;
+      background: var(--paper-2);
+    }
+
+    .legal-card {
+      max-width: 980px;
+      margin: 0 auto;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 46px;
+      box-shadow: 0 24px 60px rgba(18,21,28,0.08);
+    }
+
+    .section-kicker {
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+      display: inline-block;
+      text-transform: uppercase;
+    }
+
+    .legal-card h2 {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: 1.18rem;
+      line-height: 1.3;
+      margin: 34px 0 10px;
+      color: var(--ink);
+    }
+
+    .legal-card h2:first-of-type {
+      margin-top: 0;
+    }
+
+    .legal-card p {
+      color: var(--steel);
+      font-size: 0.98rem;
+      margin-bottom: 13px;
+    }
+
+    .legal-card ul {
+      margin: 0 0 18px 20px;
+      color: var(--steel);
+      font-size: 0.98rem;
+    }
+
+    .legal-card li {
+      margin-bottom: 8px;
+    }
+
+    .legal-card a {
+      color: var(--blue);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .back {
+      display: inline-flex;
+      margin-top: 44px;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--blue);
+      text-decoration: none !important;
+    }
+
+    .back:hover {
+      text-decoration: underline !important;
+    }
+
+    /* ---------- footer ---------- */
+
+    footer {
+      background: var(--paper);
+      color: var(--steel);
+      padding: 30px 40px;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a:hover {
+      color: var(--ink);
+    }
+
+    @media (max-width: 1020px) {
+      .nav-links {
+        gap: 24px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links,
+      .nav-actions {
+        display: none;
+      }
+
+      .brand-logo {
+        height: 40px;
+      }
+
+      .topbar {
+        padding: 8px 24px;
+      }
+
+      .nav {
+        padding: 14px 24px;
+      }
+
+      .legal-hero {
+        padding: 64px 24px 52px;
+      }
+
+      .legal-content {
+        padding: 56px 24px 80px;
+      }
+
+      .legal-card {
+        padding: 30px 22px;
+      }
+
+      footer {
+        padding: 26px 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <span>Pilotify UG (i.G.) — KI, Microsoft 365 Copilot & digitale Transformation</span>
+      <span>Qualifizierung über ebizz.training</span>
+    </div>
+  </div>
+
+<header>
+  <div class="nav">
+    <a class="brand" href="index.html" aria-label="Zur Startseite">
+      <img
+        class="brand-logo"
+        src="images/pilotify_logo_gradient.png"
+        alt="Pilotify"
+        width="1800"
+        height="500">
+    </a>
+
+    <nav class="nav-links" aria-label="Hauptnavigation">
+      <a href="index.html#loesungen">Lösungen</a>
+      <a href="index.html#ansatz">Ansatz</a>
+      <a href="index.html#academy">Academy</a>
+      <a href="index.html#unternehmen">Unternehmen</a>
+      <a href="index.html#kontakt">Kontakt</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a class="btn btn-outline-ink"
+         href="https://ebizz.training"
+         target="_blank"
+         rel="noopener noreferrer">
+         Academy
+      </a>
+
+      <a class="btn btn-primary"
+         href="mailto:hallo@pilotify.io">
+         Kontakt
+      </a>
+    </div>
+  </div>
+</header>
+
+  <main id="main">
+
+    <section class="legal-hero">
+      <div class="legal-hero-inner">
+        <div class="eyebrow">
+          <span class="dot"></span>
+          <span>Rechtliches · Datenschutz · Pilotify</span>
+        </div>
+
+        <h1>Datenschutz<br><span class="gradient-text">erklärung</span></h1>
+
+        <p class="lead">
+          Informationen zur Verarbeitung personenbezogener Daten bei Nutzung dieser Website
+          gemäß DSGVO, BDSG und TTDSG.
+        </p>
+      </div>
+    </section>
+
+    <section class="legal-content">
+      <div class="legal-card">
+        <div class="section-kicker">Datenschutzerklärung</div>
+
+        <h2>Wer wir sind</h2>
+        <p>
+          Die Adresse unserer Website ist: <a href="https://www.pilotify.io" target="_blank" rel="noopener noreferrer">https://www.pilotify.io</a>.
+        </p>
+        <p>
+          Verantwortlicher für die Datenverarbeitung:<br>
+          Pilotify UG (haftungsbeschränkt) i.G.<br>
+          vertreten durch Heiko Lohoff, Geschäftsführer<br>
+          Radlkoferstr. 2<br>
+          81373 München<br>
+          Deutschland
+        </p>
+        <p>
+          Kontakt: <a href="mailto:hallo@pilotify.io">hallo@pilotify.io</a>
+        </p>
+
+        <h2>Allgemeine Hinweise zur Datenverarbeitung</h2>
+        <p>
+          Die Pilotify UG (haftungsbeschränkt) i.G. nimmt den Schutz Ihrer personenbezogenen Daten ernst.
+          Ihre Daten werden im Rahmen der gesetzlichen Vorschriften (DSGVO, BDSG, TTDSG) verarbeitet.
+        </p>
+
+        <h2>Kontaktaufnahme</h2>
+        <p>
+          Wenn Sie uns kontaktieren (z. B. per E-Mail oder über den auf dieser Website eingebundenen
+          Chat-Assistenten), verarbeiten wir Ihre Daten zur Bearbeitung Ihrer Anfrage.
+        </p>
+        <p>
+          Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO sowie Art. 6 Abs. 1 lit. f DSGVO
+        </p>
+
+        <h2>Teilnehmer- und Kundendaten</h2>
+        <p>
+          Zur Durchführung von Trainings, Workshops und Webinaren im Rahmen unserer Enablement-Formate
+          verarbeiten wir Teilnehmerdaten (z. B. Name, E-Mail-Adresse, Buchungsdaten). Die Buchung kann
+          über Microsoft Bookings erfolgen, die Durchführung über Microsoft Teams.
+        </p>
+        <p>
+          Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO
+        </p>
+        <p>
+          Eine Aufzeichnung von Trainings erfolgt nur mit vorheriger Einwilligung (Art. 6 Abs. 1 lit. a DSGVO).
+        </p>
+
+        <h2>Cookies</h2>
+        <p>
+          Unsere Website verwendet Cookies. Cookies sind kleine Textdateien, die auf Ihrem Endgerät
+          gespeichert werden.
+        </p>
+        <p>
+          Technisch notwendige Cookies sind für den Betrieb der Website erforderlich und bedürfen keiner
+          Einwilligung.<br>
+          Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO, § 25 Abs. 2 TTDSG
+        </p>
+        <p>
+          Nicht notwendige Cookies (z. B. für den Chat-Assistenten oder externe Inhalte) werden nur nach
+          Ihrer Einwilligung gesetzt.<br>
+          Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TTDSG
+        </p>
+        <p>
+          Beim erstmaligen Besuch unserer Website wird ein Cookie-Banner angezeigt, über das Sie Ihre
+          Einwilligung erteilen können. Ihre Einwilligung können Sie jederzeit über den Cookie-Hinweis
+          auf unserer Website anpassen oder widerrufen.
+        </p>
+
+        <h2>Eingesetzte Drittanbieter</h2>
+        <p>
+          Auf dieser Website können Dienste von Drittanbietern eingebunden sein, insbesondere:
+        </p>
+        <ul>
+          <li>Microsoft Bookings</li>
+          <li>Microsoft Teams</li>
+          <li>Botpress (Chat-Assistent, unten rechts auf der Website)</li>
+          <li>Google Fonts (Schriftarten, eingebunden über Google-Server)</li>
+        </ul>
+        <p>
+          Diese Anbieter können eigenständig Daten verarbeiten und Cookies setzen. Der Chat-Assistent
+          (Botpress) wird erst nach Ihrer Cookie-Einwilligung geladen; ohne Einwilligung findet keine
+          Verbindung zu Botpress statt.
+        </p>
+        <p>
+          Bei der Nutzung von Microsoft-, Google- und Botpress-Diensten kann es zu einer Übermittlung
+          personenbezogener Daten in Drittländer (z. B. USA/Kanada) kommen. Microsoft und Google sind
+          unter dem EU-US Data Privacy Framework zertifiziert; für Botpress gelten die im Verarbeitungs-
+          vertrag des Anbieters vorgesehenen Garantien (u. a. EU-Standardvertragsklauseln).
+        </p>
+        <p>
+          Weitere Informationen finden Sie unter:<br>
+          <a href="https://privacy.microsoft.com/de-de/privacystatement" target="_blank" rel="noopener noreferrer">Microsoft Datenschutzerklärung</a><br>
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Datenschutzerklärung</a><br>
+          <a href="https://botpress.com/privacy" target="_blank" rel="noopener noreferrer">Botpress Datenschutzerklärung</a>
+        </p>
+
+        <h2>Eingebettete Inhalte</h2>
+        <p>
+          Eingebettete Inhalte (z. B. der Chat-Assistent oder Videos) verhalten sich so, als hätten Sie
+          die jeweilige externe Website direkt besucht. Dabei können personenbezogene Daten an die
+          jeweiligen Anbieter übermittelt werden.
+        </p>
+
+        <h2>Speicherdauer</h2>
+        <ul>
+          <li>Anfragen: ca. 6 Monate</li>
+          <li>Vertragsdaten: 6–10 Jahre (gesetzliche Aufbewahrungspflichten)</li>
+          <li>Einwilligungen: bis zum Widerruf</li>
+        </ul>
+
+        <h2>Ihre Rechte</h2>
+        <p>Sie haben folgende Rechte:</p>
+        <ul>
+          <li>Auskunft über Ihre gespeicherten Daten</li>
+          <li>Berichtigung unrichtiger Daten</li>
+          <li>Löschung Ihrer Daten</li>
+          <li>Einschränkung der Verarbeitung</li>
+          <li>Datenübertragbarkeit</li>
+          <li>Widerspruch gegen die Verarbeitung</li>
+        </ul>
+        <p>
+          Kontakt zur Wahrnehmung Ihrer Rechte: <a href="mailto:hallo@pilotify.io">hallo@pilotify.io</a>
+        </p>
+
+        <h2>Aufsichtsbehörde</h2>
+        <p>
+          Sie haben das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren.
+        </p>
+        <p>
+          Zuständige Aufsichtsbehörde:<br>
+          Bayerisches Landesamt für Datenschutzaufsicht (BayLDA)<br>
+          Promenade 18<br>
+          91522 Ansbach<br>
+          <a href="https://www.lda.bayern.de/" target="_blank" rel="noopener noreferrer">Zur Website</a>
+        </p>
+
+        <a class="back" href="index.html">← Zurück zur Startseite</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© 2026 Pilotify UG (i.G.) — KI, Copilot & digitale Transformation</div>
+      <div class="footer-links">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="https://ebizz.training" target="_blank" rel="noopener noreferrer">ebizz.training</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botpress-Webchat: zeigt das Chat-Icon auch auf der Datenschutzseite -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.7/inject.js"></script>
+  <script src="https://files.bpcontent.cloud/2025/10/18/15/20251018153832-4PMMX3GO.js" defer></script>
+
+</body>
+</html>
