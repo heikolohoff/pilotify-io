@@ -447,25 +447,7 @@
     .footer-links { display: flex; gap: 18px; flex-wrap: wrap; }
     .footer-links a:hover { color: var(--ink); }
 
-    /* ---------- chatbot embed (Botpress) ---------- */
-    .chat-embed {
-      position: fixed;
-      right: 16px;
-      bottom: 16px;
-      width: 400px;
-      height: 640px;
-      max-width: 94vw;
-      max-height: 82vh;
-      z-index: 50;
-      pointer-events: none;
-    }
-    .chat-embed iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      background: transparent;
-      pointer-events: auto;
-    }
+    /* Botpress-Webchat positioniert sich selbst (kein eigenes CSS nötig) */
 
     @media (max-width: 1020px) {
       .split-grid, .academy-grid, .contact-box { grid-template-columns: 1fr; }
@@ -670,18 +652,23 @@
 
   <!--
     CHATBOT (Botpress, Testeinbindung):
-    Verwendet denselben Bot wie ebizz.training. Sobald ihr ein eigenes,
-    optisch angepasstes Icon/Theme für Pilotify im Botpress-Studio
-    konfiguriert habt, reicht es, die configUrl unten auszutauschen.
+    Offizielle Embed-Methode statt iframe/Share-Link. Damit ist der Bot
+    standardmäßig nur als Icon/Bubble sichtbar; das Chatfenster öffnet
+    sich erst per Klick darauf. Verwendet denselben Bot wie ebizz.training.
+    Sobald ihr ein eigenes, optisch angepasstes Icon/Theme für Pilotify
+    im Botpress-Studio konfiguriert habt, reicht es, die configUrl
+    unten auszutauschen.
   -->
-  <div class="chat-embed">
-    <iframe
-      src="https://cdn.botpress.cloud/webchat/v3.7/shareable.html?configUrl=https://files.bpcontent.cloud/2025/10/18/15/20251018153832-CZWPQYQT.json"
-      title="Pilotify Chat-Assistent"
-      allow="microphone"
-      loading="lazy">
-    </iframe>
-  </div>
+  <script src="https://cdn.botpress.cloud/webchat/v3.7/inject.js" defer></script>
+  <script defer>
+    window.addEventListener('load', function () {
+      if (window.botpress) {
+        window.botpress.init({
+          configUrl: "https://files.bpcontent.cloud/2025/10/18/15/20251018153832-CZWPQYQT.json"
+        });
+      }
+    });
+  </script>
 
 </body>
 </html>
