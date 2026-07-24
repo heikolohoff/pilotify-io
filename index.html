@@ -652,23 +652,15 @@
 
   <!--
     CHATBOT (Botpress, Testeinbindung):
-    Offizielle Embed-Methode statt iframe/Share-Link. Damit ist der Bot
-    standardmäßig nur als Icon/Bubble sichtbar; das Chatfenster öffnet
-    sich erst per Klick darauf. Verwendet denselben Bot wie ebizz.training.
-    Sobald ihr ein eigenes, optisch angepasstes Icon/Theme für Pilotify
-    im Botpress-Studio konfiguriert habt, reicht es, die configUrl
-    unten auszutauschen.
+    Offizielles Embed-Snippet aus dem Botpress-Dashboard. Initialisiert
+    sich selbst, kein zusätzlicher init()-Aufruf nötig. Standardmäßig
+    nur als Icon/Bubble sichtbar; Chatfenster öffnet sich per Klick.
+    Verwendet denselben Bot wie ebizz.training. Sobald ihr ein eigenes,
+    optisch angepasstes Icon/Theme für Pilotify im Botpress-Studio
+    konfiguriert habt, reicht es, die zweite Script-URL auszutauschen.
   -->
-  <script src="https://cdn.botpress.cloud/webchat/v3.7/inject.js" defer></script>
-  <script defer>
-    window.addEventListener('load', function () {
-      if (window.botpress) {
-        window.botpress.init({
-          configUrl: "https://files.bpcontent.cloud/2025/10/18/15/20251018153832-CZWPQYQT.json"
-        });
-      }
-    });
-  </script>
+  <script src="https://cdn.botpress.cloud/webchat/v3.7/inject.js"></script>
+  <script src="https://files.bpcontent.cloud/2025/10/18/15/20251018153832-4PMMX3GO.js" defer></script>
 
 </body>
 </html>
