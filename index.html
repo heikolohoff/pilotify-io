@@ -11,17 +11,17 @@
 
   <style>
     :root {
-      --ink: #14181c;
-      --ink-2: #1b2126;
-      --paper: #ecede6;
-      --paper-2: #e1e2d8;
-      --signal: #ff5a1f;
-      --steel: #5c6b70;
-      --line: rgba(20, 24, 28, 0.15);
-      --line-on-ink: rgba(236, 237, 230, 0.16);
-      --paper-70: rgba(236, 237, 230, 0.72);
-      --paper-50: rgba(236, 237, 230, 0.5);
-      --radius: 3px;
+      --ink: #12151c;
+      --paper: #ffffff;
+      --paper-2: #f2f6fb;
+      --paper-3: #e9eef7;
+      --cyan: #0891b2;
+      --blue: #2554e0;
+      --violet: #6423c9;
+      --gradient: linear-gradient(120deg, var(--cyan) 0%, var(--blue) 55%, var(--violet) 100%);
+      --steel: #5b6672;
+      --line: rgba(18, 21, 28, 0.10);
+      --radius: 10px;
       --display: "Poppins", sans-serif;
       --body: "Inter", sans-serif;
       --mono: "JetBrains Mono", monospace;
@@ -40,21 +40,49 @@
     a { color: inherit; text-decoration: none; }
     ul { list-style: none; }
 
+    a:focus-visible, button:focus-visible, .btn:focus-visible {
+      outline: 3px solid var(--blue);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: auto;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 12px 18px;
+      border-radius: 0 0 8px 0;
+      z-index: 100;
+      font-weight: 600;
+    }
+    .skip-link:focus {
+      left: 0;
+      top: 0;
+    }
+
     .mono {
       font-family: var(--mono);
       letter-spacing: 0.04em;
       text-transform: uppercase;
     }
 
+    .gradient-text {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
     /* ---------- topbar ---------- */
     .topbar {
       background: var(--ink);
-      color: var(--paper-70);
+      color: rgba(255,255,255,0.78);
       font-family: var(--mono);
       font-size: 0.74rem;
       letter-spacing: 0.05em;
       padding: 8px 24px;
-      border-bottom: 1px solid var(--line-on-ink);
     }
     .topbar-inner {
       max-width: 1240px;
@@ -71,9 +99,9 @@
       position: sticky;
       top: 0;
       z-index: 30;
-      background: rgba(236, 237, 230, 0.94);
+      background: rgba(255, 255, 255, 0.92);
       border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(6px);
+      backdrop-filter: blur(8px);
     }
     .nav {
       max-width: 1240px;
@@ -90,7 +118,7 @@
       gap: 12px;
     }
     .brand-logo {
-      height: 60px;
+      height: 56px;
       width: auto;
       display: block;
     }
@@ -98,11 +126,11 @@
       display: flex;
       gap: 40px;
       align-items: center;
-      font-size: 1.06rem;
+      font-size: 1.02rem;
       font-weight: 600;
     }
-    .nav-links a { border-bottom: 1px solid transparent; padding-bottom: 3px; transition: border-color .15s ease; }
-    .nav-links a:hover { border-color: var(--signal); }
+    .nav-links a { border-bottom: 2px solid transparent; padding-bottom: 3px; transition: border-color .15s ease; }
+    .nav-links a:hover { border-color: var(--blue); }
     .nav-actions { display: flex; align-items: center; gap: 10px; }
 
     .btn {
@@ -119,25 +147,44 @@
       transition: 0.15s ease;
       white-space: nowrap;
     }
-    .btn-primary { background: var(--signal); color: var(--ink); }
-    .btn-primary:hover { background: #ff7238; }
+    .btn-primary { background: var(--gradient); color: #fff; box-shadow: 0 10px 26px rgba(47,107,255,0.28); }
+    .btn-primary:hover { filter: brightness(1.06); transform: translateY(-1px); }
     .btn-outline-ink { border-color: var(--ink); color: var(--ink); background: transparent; }
-    .btn-outline-ink:hover { background: var(--ink); color: var(--paper); }
-    .btn-outline-paper { border-color: var(--line-on-ink); color: var(--paper); background: transparent; }
-    .btn-outline-paper:hover { border-color: var(--paper); }
+    .btn-outline-ink:hover { background: var(--ink); color: #fff; }
+    .btn-outline-paper { border-color: rgba(255,255,255,0.5); color: #fff; background: transparent; }
+    .btn-outline-paper:hover { border-color: #fff; }
 
     /* ---------- hero ---------- */
     .hero {
       position: relative;
       overflow: hidden;
-      background: var(--ink);
-      color: var(--paper);
-      padding: 88px 24px 0;
-      background-image:
-        linear-gradient(var(--line-on-ink) 1px, transparent 1px),
-        linear-gradient(90deg, var(--line-on-ink) 1px, transparent 1px);
-      background-size: 64px 64px;
-      background-position: -1px -1px;
+      background: var(--paper);
+      color: var(--ink);
+      padding: 96px 24px 0;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -180px;
+      right: -160px;
+      width: 620px;
+      height: 620px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(8,145,178,0.32), transparent 68%);
+      filter: blur(6px);
+      z-index: 0;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: -220px;
+      left: -180px;
+      width: 560px;
+      height: 560px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(100,35,201,0.26), transparent 70%);
+      filter: blur(6px);
+      z-index: 0;
     }
     .hero-inner {
       max-width: 1240px;
@@ -149,16 +196,17 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 7px 12px;
-      border: 1px solid var(--line-on-ink);
-      border-radius: var(--radius);
+      padding: 7px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper-2);
       font-family: var(--mono);
       font-size: 0.72rem;
       letter-spacing: 0.06em;
-      color: var(--paper-70);
+      color: var(--steel);
       margin-bottom: 32px;
     }
-    .eyebrow .dot { width: 6px; height: 6px; background: var(--signal); }
+    .eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gradient); }
 
     .hero h1 {
       font-family: var(--display);
@@ -169,11 +217,10 @@
       max-width: 880px;
       margin-bottom: 26px;
     }
-    .hero h1 span { color: var(--signal); }
 
     .hero p.lead {
       font-size: 1.15rem;
-      color: var(--paper-70);
+      color: var(--steel);
       max-width: 640px;
       margin-bottom: 36px;
     }
@@ -183,52 +230,57 @@
     .heading-strip {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      border-top: 1px solid var(--line-on-ink);
+      border-top: 1px solid var(--line);
     }
     .heading-item {
       padding: 22px 24px 26px 0;
-      border-right: 1px solid var(--line-on-ink);
+      border-right: 1px solid var(--line);
     }
     .heading-item:last-child { border-right: none; }
     .heading-item .brg {
       font-family: var(--mono);
       font-size: 0.78rem;
-      color: var(--signal);
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
       display: block;
       margin-bottom: 8px;
     }
-    .heading-item span.label { font-size: 0.96rem; color: var(--paper-70); }
+    .heading-item span.label { font-size: 0.96rem; color: var(--steel); }
 
-    /* instrument panel replacing gradient mockup */
+    /* instrument panel */
     .panel-wrap { max-width: 1240px; margin: 0 auto; position: relative; z-index: 2; padding: 44px 0 0; }
     .panel {
-      background: var(--ink-2);
-      border: 1px solid var(--line-on-ink);
-      border-radius: 8px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 16px;
       overflow: hidden;
+      box-shadow: 0 24px 60px rgba(18,21,28,0.08);
     }
     .panel-head {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 16px 22px;
-      border-bottom: 1px solid var(--line-on-ink);
+      border-bottom: 1px solid var(--line);
       font-family: var(--mono);
       font-size: 0.74rem;
-      color: var(--paper-70);
+      color: var(--steel);
       letter-spacing: 0.05em;
+      background: var(--paper-2);
     }
     .panel-row {
       display: grid;
       grid-template-columns: 90px 1fr;
       padding: 22px;
-      border-bottom: 1px solid var(--line-on-ink);
+      border-bottom: 1px solid var(--line);
       gap: 20px;
     }
     .panel-row:last-child { border-bottom: none; }
-    .panel-row .brg { font-family: var(--mono); color: var(--signal); font-size: 0.86rem; }
+    .panel-row .brg { font-family: var(--mono); background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; font-size: 0.86rem; }
     .panel-row h4 { font-family: var(--display); font-weight: 500; margin-bottom: 6px; }
-    .panel-row p { color: var(--paper-70); font-size: 0.94rem; }
+    .panel-row p { color: var(--steel); font-size: 0.94rem; }
 
     /* ---------- generic sections ---------- */
     section { padding: 96px 24px; }
@@ -238,7 +290,10 @@
       font-family: var(--mono);
       font-size: 0.76rem;
       letter-spacing: 0.08em;
-      color: var(--signal);
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
       margin-bottom: 16px;
       padding-bottom: 10px;
       border-bottom: 1px solid var(--line);
@@ -262,6 +317,8 @@
       gap: 1px;
       background: var(--line);
       border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
     }
     .solution-card {
       background: var(--paper);
@@ -272,7 +329,10 @@
     .solution-card .brg {
       font-family: var(--mono);
       font-size: 0.78rem;
-      color: var(--signal);
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
       display: block;
       margin-bottom: 22px;
     }
@@ -285,7 +345,7 @@
 
     .schematic {
       background: var(--ink);
-      border-radius: 8px;
+      border-radius: 16px;
       min-height: 440px;
       position: relative;
       overflow: hidden;
@@ -294,19 +354,26 @@
       justify-content: space-between;
       padding: 30px;
     }
-    .schematic svg { position: absolute; inset: 0; margin: auto; opacity: 0.9; }
+    .schematic::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 70% 30%, rgba(8,145,178,0.26), transparent 55%),
+                  radial-gradient(circle at 25% 80%, rgba(100,35,201,0.30), transparent 55%);
+    }
+    .schematic svg { position: absolute; inset: 0; margin: auto; opacity: 0.95; z-index: 1; }
     .schematic h3 {
       font-family: var(--display);
-      color: var(--paper);
-      font-size: 1.5rem;
-      line-height: 1.2;
-      max-width: 360px;
+      color: #fff;
+      font-size: 1.65rem;
+      line-height: 1.28;
+      max-width: none;
       position: relative;
       z-index: 2;
     }
-    .schematic .cap { font-family: var(--mono); color: var(--paper-50); font-size: 0.74rem; letter-spacing: 0.06em; position: relative; z-index: 2; }
+    .schematic .cap { font-family: var(--mono); color: rgba(255,255,255,0.55); font-size: 0.74rem; letter-spacing: 0.06em; position: relative; z-index: 2; }
 
-    .feature-list { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .feature-list { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
     .feature {
       display: grid;
       grid-template-columns: 40px 1fr;
@@ -318,65 +385,93 @@
     .check {
       width: 26px;
       height: 26px;
-      border: 1px solid var(--ink);
-      border-radius: var(--radius);
+      border-radius: 8px;
+      background: var(--gradient);
+      color: #fff;
       display: grid;
       place-items: center;
       font-family: var(--mono);
-      font-size: 0.78rem;
+      font-size: 0.72rem;
+      font-weight: 600;
     }
     .feature h3 { font-family: var(--display); font-weight: 500; font-size: 1.02rem; margin-bottom: 6px; }
     .feature p { color: var(--steel); font-size: 0.92rem; }
 
     /* ---------- academy ---------- */
     .academy {
-      background: var(--ink);
-      color: var(--paper);
-      background-image:
-        linear-gradient(var(--line-on-ink) 1px, transparent 1px),
-        linear-gradient(90deg, var(--line-on-ink) 1px, transparent 1px);
-      background-size: 64px 64px;
+      background: var(--paper-3);
+      color: var(--ink);
     }
     .academy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 46px; align-items: center; }
     .academy h2 { font-family: var(--display); font-weight: 700; font-size: clamp(1.9rem, 3vw, 2.6rem); line-height: 1.12; margin-bottom: 18px; }
-    .academy p.lead { color: var(--paper-70); font-size: 1.06rem; margin-bottom: 30px; }
-    .academy-card { background: var(--ink-2); border: 1px solid var(--line-on-ink); border-radius: 8px; padding: 30px; }
+    .academy p.lead { color: var(--steel); font-size: 1.06rem; margin-bottom: 30px; }
+    .academy-card { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 30px; box-shadow: 0 18px 44px rgba(18,21,28,0.06); }
     .academy-card h3 { font-family: var(--display); font-weight: 500; margin-bottom: 18px; }
     .academy-card ul { display: grid; gap: 13px; }
-    .academy-card li { display: flex; gap: 10px; font-size: 0.96rem; color: var(--paper-70); }
-    .academy-card li::before { content: "→"; color: var(--signal); font-family: var(--mono); }
+    .academy-card li { display: flex; gap: 10px; font-size: 0.96rem; color: var(--steel); }
+    .academy-card li::before { content: "→"; background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; font-family: var(--mono); font-weight: 700; }
 
     /* ---------- metrics ---------- */
-    .metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
     .metric { background: var(--paper); padding: 28px; }
-    .metric strong { display: block; font-family: var(--display); font-size: 1.7rem; margin-bottom: 8px; }
+    .metric strong { display: block; font-family: var(--display); font-size: 1.7rem; margin-bottom: 8px; background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
     .metric span { color: var(--steel); font-size: 0.9rem; }
 
     /* ---------- contact ---------- */
     .contact-box {
       background: var(--ink);
-      color: var(--paper);
-      border-radius: 8px;
+      color: #fff;
+      border-radius: 20px;
       padding: 56px;
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
       gap: 36px;
       align-items: center;
+      position: relative;
+      overflow: hidden;
     }
+    .contact-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 15% 20%, rgba(8,145,178,0.26), transparent 55%),
+                  radial-gradient(circle at 85% 85%, rgba(100,35,201,0.30), transparent 55%);
+    }
+    .contact-box > * { position: relative; z-index: 1; }
     .contact-box h2 { font-family: var(--display); font-weight: 700; font-size: clamp(1.9rem, 3vw, 2.5rem); line-height: 1.12; margin-bottom: 16px; }
-    .contact-box p { color: var(--paper-70); font-size: 1.02rem; }
+    .contact-box p { color: rgba(255,255,255,0.72); font-size: 1.02rem; }
     .contact-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
 
-    footer { background: var(--ink); color: var(--paper-50); padding: 30px 24px; font-family: var(--mono); font-size: 0.78rem; }
+    footer { background: var(--paper); color: var(--steel); padding: 30px 24px; font-family: var(--mono); font-size: 0.78rem; border-top: 1px solid var(--line); }
     .footer-inner { max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; align-items: center; }
     .footer-links { display: flex; gap: 18px; flex-wrap: wrap; }
-    .footer-links a:hover { color: var(--paper); }
+    .footer-links a:hover { color: var(--ink); }
+
+    /* ---------- chatbot embed (Botpress) ---------- */
+    .chat-embed {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      width: 400px;
+      height: 640px;
+      max-width: 94vw;
+      max-height: 82vh;
+      z-index: 50;
+      pointer-events: none;
+    }
+    .chat-embed iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: transparent;
+      pointer-events: auto;
+    }
 
     @media (max-width: 1020px) {
       .split-grid, .academy-grid, .contact-box { grid-template-columns: 1fr; }
       .solution-grid, .metric-grid { grid-template-columns: repeat(2, 1fr); }
       .heading-strip { grid-template-columns: 1fr; }
-      .heading-item { border-right: none; border-bottom: 1px solid var(--line-on-ink); }
+      .heading-item { border-right: none; border-bottom: 1px solid var(--line); }
       .contact-actions { justify-content: flex-start; }
     }
     @media (max-width: 720px) {
@@ -384,12 +479,14 @@
       .solution-grid, .metric-grid { grid-template-columns: 1fr; }
       .panel-row { grid-template-columns: 1fr; }
       .contact-box { padding: 34px 22px; }
-      .brand-logo { height: 37px; }
+      .brand-logo { height: 40px; }
     }
   </style>
 </head>
 
 <body>
+
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
   <div class="topbar">
     <div class="topbar-inner">
@@ -401,9 +498,9 @@
   <header>
     <div class="nav">
       <a class="brand" href="#">
-        <img class="brand-logo" src="images/pilotify_logo_orange_semibold.png" alt="Pilotify" width="1800" height="500">
+        <img class="brand-logo" src="images/pilotify_logo_gradient.png" alt="Pilotify" width="1800" height="500">
       </a>
-      <nav class="nav-links">
+      <nav class="nav-links" aria-label="Hauptnavigation">
         <a href="#loesungen">Lösungen</a>
         <a href="#ansatz">Ansatz</a>
         <a href="#academy">Academy</a>
@@ -417,13 +514,13 @@
     </div>
   </header>
 
-  <main>
+  <main id="main">
 
     <section class="hero">
       <div class="hero-inner">
         <div class="eyebrow"><span class="dot"></span><span>AI Enablement · Microsoft Cloud · DACH</span></div>
 
-        <h1>KI produktiv machen.<br><span>Von Strategie bis Umsetzung.</span></h1>
+        <h1>KI produktiv machen.<br><span class="gradient-text">Von Strategie bis Umsetzung.</span></h1>
 
         <p class="lead">
           Die Pilotify UG (i.G.) entwickelt und begleitet moderne KI-, Copilot- und Digital-Workplace-Lösungen
@@ -432,7 +529,7 @@
 
         <div class="hero-buttons">
           <a class="btn btn-primary" href="mailto:hallo@pilotify.io">Beratung anfragen</a>
-          <a class="btn btn-outline-paper" href="#loesungen">Lösungen entdecken</a>
+          <a class="btn btn-outline-ink" href="#loesungen">Lösungen entdecken</a>
         </div>
 
         <div class="heading-strip">
@@ -473,13 +570,13 @@
       <div class="container split-grid">
         <div class="schematic">
           <svg viewBox="0 0 300 300" width="260" height="260">
-            <circle cx="150" cy="150" r="120" fill="none" stroke="rgba(236,237,230,0.18)" stroke-width="1"/>
-            <circle cx="150" cy="150" r="80" fill="none" stroke="rgba(236,237,230,0.18)" stroke-width="1"/>
-            <circle cx="150" cy="150" r="40" fill="none" stroke="rgba(236,237,230,0.18)" stroke-width="1"/>
-            <line x1="150" y1="20" x2="150" y2="280" stroke="rgba(236,237,230,0.14)" stroke-width="1"/>
-            <line x1="20" y1="150" x2="280" y2="150" stroke="rgba(236,237,230,0.14)" stroke-width="1"/>
-            <line x1="150" y1="150" x2="220" y2="90" stroke="#ff5a1f" stroke-width="2.5" stroke-linecap="round"/>
-            <circle cx="150" cy="150" r="4" fill="#ff5a1f"/>
+            <circle cx="150" cy="150" r="120" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+            <circle cx="150" cy="150" r="80" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+            <circle cx="150" cy="150" r="40" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+            <line x1="150" y1="20" x2="150" y2="280" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+            <line x1="20" y1="150" x2="280" y2="150" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+            <line x1="150" y1="150" x2="220" y2="90" stroke="#0891b2" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="150" cy="150" r="4" fill="#0891b2"/>
           </svg>
           <h3>Technologie wird erst wirklich wertvoll, wenn Menschen sie produktiv nutzen.</h3>
           <span class="cap">Kurs wird laufend nachjustiert</span>
@@ -508,7 +605,7 @@
           <h2>Pilotify-Lösungen. Qualifizierung über ebizz.training.</h2>
           <p class="lead">Die Pilotify UG (i.G.) positioniert sich als Beratungs- und Umsetzungspartner für KI, Microsoft 365 Copilot und digitale Transformation. Trainings und Lernformate werden in enger Verbindung mit der Academy-Marke ebizz.training bereitgestellt.</p>
           <div class="hero-buttons">
-            <a class="btn btn-outline-paper" href="https://ebizz.training">ebizz.training besuchen</a>
+            <a class="btn btn-outline-ink" href="https://ebizz.training">ebizz.training besuchen</a>
             <a class="btn btn-primary" href="mailto:hallo@pilotify.io">Pilotify kontaktieren</a>
           </div>
         </div>
@@ -570,6 +667,21 @@
       </div>
     </div>
   </footer>
+
+  <!--
+    CHATBOT (Botpress, Testeinbindung):
+    Verwendet denselben Bot wie ebizz.training. Sobald ihr ein eigenes,
+    optisch angepasstes Icon/Theme für Pilotify im Botpress-Studio
+    konfiguriert habt, reicht es, die configUrl unten auszutauschen.
+  -->
+  <div class="chat-embed">
+    <iframe
+      src="https://cdn.botpress.cloud/webchat/v3.7/shareable.html?configUrl=https://files.bpcontent.cloud/2025/10/18/15/20251018153832-CZWPQYQT.json"
+      title="Pilotify Chat-Assistent"
+      allow="microphone"
+      loading="lazy">
+    </iframe>
+  </div>
 
 </body>
 </html>
