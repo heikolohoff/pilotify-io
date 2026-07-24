@@ -463,12 +463,12 @@
       padding: 22px 26px;
       box-shadow: 0 24px 60px rgba(18,21,28,0.28);
       z-index: 60;
-      display: flex;
       flex-wrap: wrap;
       align-items: center;
       gap: 18px;
       justify-content: space-between;
     }
+    .cookie-banner:not([hidden]) { display: flex; }
     .cookie-banner p { flex: 1 1 320px; font-size: 0.92rem; margin: 0; }
     .cookie-banner a { color: #fff; text-decoration: underline; }
     .cookie-actions { display: flex; gap: 10px; flex-wrap: wrap; }
@@ -491,7 +491,7 @@
       box-shadow: 0 14px 32px rgba(18,21,28,0.3);
       z-index: 55;
     }
-    .a11y-fab svg { width: 24px; height: 24px; }
+    .a11y-fab svg, .a11y-fab img { width: 24px; height: 24px; display: block; object-fit: contain; }
     .a11y-panel {
       position: fixed;
       left: 20px;
@@ -772,10 +772,7 @@
     Chat-Icon unten rechts kollidiert.
   -->
   <button type="button" class="a11y-fab" id="a11yToggle" aria-label="Barrierefreie Anpassungen öffnen" aria-expanded="false" aria-controls="a11yPanel">
-    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <circle cx="12" cy="5" r="2" fill="#fff"/>
-      <path d="M4 9h16M12 9v6m0 0-3.5 6M12 15l3.5 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-    </svg>
+    <img src="images/pilotify_a11y_icon.png" alt="" width="24" height="24">
   </button>
 
   <div class="a11y-panel" id="a11yPanel" hidden>
