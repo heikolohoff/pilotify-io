@@ -5,6 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pilotify UG | KI, Copilot & digitale Transformation</title>
   <meta name="description" content="Pilotify UG unterstützt Unternehmen bei Künstlicher Intelligenz, Microsoft 365 Copilot, KI-Agenten und digitaler Transformation. Qualifizierung erfolgt über ebizz.training.">
+  <link rel="canonical" href="https://www.pilotify.io/">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / LinkedIn / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Pilotify">
+  <meta property="og:title" content="Pilotify UG | KI, Copilot & digitale Transformation">
+  <meta property="og:description" content="Pilotify UG unterstützt Unternehmen bei Künstlicher Intelligenz, Microsoft 365 Copilot, KI-Agenten und digitaler Transformation.">
+  <meta property="og:url" content="https://www.pilotify.io/">
+  <meta property="og:image" content="https://www.pilotify.io/images/pilotify_og_image.png">
+  <meta property="og:locale" content="de_DE">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pilotify UG | KI, Copilot & digitale Transformation">
+  <meta name="twitter:description" content="Pilotify UG unterstützt Unternehmen bei Künstlicher Intelligenz, Microsoft 365 Copilot, KI-Agenten und digitaler Transformation.">
+  <meta name="twitter:image" content="https://www.pilotify.io/images/pilotify_og_image.png">
+
+  <link rel="icon" type="image/png" href="images/pilotify_favicon.png">
+
+  <!-- Strukturierte Daten für Google (Organisation) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Pilotify UG (haftungsbeschränkt) i.G.",
+    "url": "https://www.pilotify.io",
+    "logo": "https://www.pilotify.io/images/pilotify_logo_gradient.png",
+    "description": "KI-, Microsoft-365-Copilot- und Enablement-Beratung für Unternehmen im DACH-Raum.",
+    "email": "hallo@pilotify.io",
+    "telephone": "+49-89-54197366",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Radlkoferstr. 2",
+      "postalCode": "81373",
+      "addressLocality": "München",
+      "addressCountry": "DE"
+    },
+    "areaServed": "DE",
+    "sameAs": [
+      "https://ebizz.training"
+    ]
+  }
+  </script>
+
   <!-- Google Fonts wird erst nach Cookie-Einwilligung geladen (siehe consent-Skript am Seitenende) -->
 
   <style>
@@ -131,6 +176,26 @@
     .nav-links a { border-bottom: 2px solid transparent; padding-bottom: 3px; transition: border-color .15s ease; }
     .nav-links a:hover { border-color: var(--blue); }
     .nav-actions { display: flex; align-items: center; gap: 10px; }
+
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      padding: 6px;
+      cursor: pointer;
+      color: var(--ink);
+    }
+    .nav-toggle svg { width: 26px; height: 26px; display: block; }
+
+    .mobile-menu {
+      flex-direction: column;
+      padding: 8px 40px 22px;
+      border-top: 1px solid var(--line);
+      background: var(--paper);
+    }
+    .mobile-menu:not([hidden]) { display: flex; }
+    .mobile-menu a { padding: 12px 0; font-weight: 600; border-bottom: 1px solid var(--line); }
+    .mobile-menu a.btn { border-bottom: none; margin-top: 10px; }
 
     .btn {
       display: inline-flex;
@@ -552,6 +617,7 @@
     }
     @media (max-width: 720px) {
       .nav-links, .nav-actions { display: none; }
+      .nav-toggle { display: block; }
       .solution-grid, .metric-grid { grid-template-columns: 1fr; }
       .panel-row { grid-template-columns: 1fr; }
       .contact-box { padding: 34px 22px; }
@@ -588,6 +654,19 @@
         <a class="btn btn-outline-ink" href="https://ebizz.training">Academy</a>
         <a class="btn btn-primary" href="mailto:hallo@pilotify.io">Kontakt</a>
       </div>
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileMenu">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu" hidden>
+      <a href="#loesungen">Lösungen</a>
+      <a href="#ansatz">Ansatz</a>
+      <a href="#academy">Academy</a>
+      <a href="#unternehmen">Unternehmen</a>
+      <a class="btn btn-outline-ink" href="https://ebizz.training">Academy</a>
+      <a class="btn btn-primary" href="mailto:hallo@pilotify.io">Kontakt</a>
     </div>
   </header>
 
@@ -802,6 +881,21 @@
   </div>
 
   <script>
+    /* ---------- Mobiles Menü ---------- */
+    var navToggle = document.getElementById('navToggle');
+    var mobileMenu = document.getElementById('mobileMenu');
+    navToggle.addEventListener('click', function () {
+      var open = mobileMenu.hidden;
+      mobileMenu.hidden = !open;
+      navToggle.setAttribute('aria-expanded', open);
+    });
+    mobileMenu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mobileMenu.hidden = true;
+        navToggle.setAttribute('aria-expanded', false);
+      });
+    });
+
     /* ---------- Cookie-Einwilligung: gesteuertes Nachladen ---------- */
     function pilotifyLoadFonts() {
       if (document.getElementById('gfonts-link')) return;
