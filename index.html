@@ -256,6 +256,16 @@
       position: relative;
       z-index: 2;
     }
+    .hero-plane {
+      position: absolute;
+      top: 20px;
+      right: 0;
+      width: 340px;
+      height: auto;
+      z-index: 1;
+      pointer-events: none;
+      user-select: none;
+    }
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -614,6 +624,7 @@
       .heading-strip { grid-template-columns: 1fr; }
       .heading-item { border-right: none; border-bottom: 1px solid var(--line); }
       .contact-actions { justify-content: flex-start; }
+      .hero-plane { width: 240px; top: 10px; opacity: 0.9; }
     }
     @media (max-width: 720px) {
       .nav-links, .nav-actions { display: none; }
@@ -624,6 +635,7 @@
       .brand-logo { height: 40px; }
       .cookie-banner { left: 12px; right: 12px; bottom: 12px; padding: 18px; }
       .a11y-panel { left: 12px; right: 12px; width: auto; bottom: 78px; }
+      .hero-plane { width: 150px; top: 0; opacity: 0.85; }
     }
   </style>
 </head>
@@ -673,6 +685,7 @@
   <main id="main">
 
     <section class="hero">
+      <img class="hero-plane" src="images/ai_paper_airplane.png" alt="" aria-hidden="true">
       <div class="hero-inner">
         <div class="eyebrow"><span class="dot"></span><span>AI Enablement · Microsoft Cloud · DACH</span></div>
 
