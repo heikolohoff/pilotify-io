@@ -641,6 +641,10 @@
       .a11y-panel { left: 12px; right: 12px; width: auto; bottom: 78px; }
       .hero-plane { width: 150px; top: 0; opacity: 0.85; }
     }
+    /* iPads im Hochformat (z. B. iPad Pro = 1024px) fallen sonst in den Desktop-Bereich */
+    @media (max-width: 1180px) and (orientation: portrait) {
+      .hero-plane { width: 210px; top: 10px; opacity: 0.85; }
+    }
   </style>
 </head>
 
