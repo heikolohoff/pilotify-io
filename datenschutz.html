@@ -157,6 +157,26 @@
       gap: 10px;
     }
 
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      padding: 6px;
+      cursor: pointer;
+      color: var(--ink);
+    }
+    .nav-toggle svg { width: 26px; height: 26px; display: block; }
+
+    .mobile-menu {
+      flex-direction: column;
+      padding: 8px 40px 22px;
+      border-top: 1px solid var(--line);
+      background: var(--paper);
+    }
+    .mobile-menu:not([hidden]) { display: flex; }
+    .mobile-menu a { padding: 12px 0; font-weight: 600; border-bottom: 1px solid var(--line); }
+    .mobile-menu a.btn { border-bottom: none; margin-top: 10px; }
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -493,6 +513,10 @@
         display: none;
       }
 
+      .nav-toggle {
+        display: block;
+      }
+
       .brand-logo {
         height: 40px;
       }
@@ -569,6 +593,20 @@
          Kontakt
       </a>
     </div>
+
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileMenu">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu" hidden>
+    <a href="index.html#loesungen">Lösungen</a>
+    <a href="index.html#ansatz">Ansatz</a>
+    <a href="index.html#academy">Academy</a>
+    <a href="index.html#unternehmen">Unternehmen</a>
+    <a class="btn btn-outline-ink" href="https://ebizz.training" target="_blank" rel="noopener noreferrer">Academy</a>
+    <a class="btn btn-primary" href="mailto:hallo@pilotify.io">Kontakt</a>
   </div>
 </header>
 
@@ -787,6 +825,20 @@
   </div>
 
   <script>
+    var navToggle = document.getElementById('navToggle');
+    var mobileMenu = document.getElementById('mobileMenu');
+    navToggle.addEventListener('click', function () {
+      var open = mobileMenu.hidden;
+      mobileMenu.hidden = !open;
+      navToggle.setAttribute('aria-expanded', open);
+    });
+    mobileMenu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mobileMenu.hidden = true;
+        navToggle.setAttribute('aria-expanded', false);
+      });
+    });
+
     function pilotifyLoadFonts() {
       if (document.getElementById('gfonts-link')) return;
       var l1 = document.createElement('link'); l1.rel = 'preconnect'; l1.href = 'https://fonts.googleapis.com';
