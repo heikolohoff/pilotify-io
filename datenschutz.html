@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Datenschutz | Pilotify UG (haftungsbeschränkt) i.G.</title>
+  <meta name="robots" content="noindex, follow" />
+  <meta name="description" content="Datenschutzerklärung der Pilotify UG (haftungsbeschränkt) i.G." />
+
+  <!-- Google Fonts wird erst nach Cookie-Einwilligung geladen (siehe consent-Skript am Seitenende) -->
+
+  <style>
+    :root {
+      --ink: #12151c;
+      --paper: #ffffff;
+      --paper-2: #f2f6fb;
+      --paper-3: #e9eef7;
+      --cyan: #0891b2;
+      --blue: #2554e0;
+      --violet: #6423c9;
+      --gradient: linear-gradient(120deg, var(--cyan) 0%, var(--blue) 55%, var(--violet) 100%);
+      --steel: #5b6672;
+      --line: rgba(18, 21, 28, 0.10);
+      --radius: 10px;
+      --display: "Poppins", sans-serif;
+      --body: "Inter", sans-serif;
+      --mono: "JetBrains Mono", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--body);
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    .btn:focus-visible {
+      outline: 3px solid var(--blue);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: auto;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 12px 18px;
+      border-radius: 0 0 8px 0;
+      z-index: 100;
+      font-weight: 600;
+    }
+
+    .skip-link:focus {
+      left: 0;
+      top: 0;
+    }
+
+    .gradient-text {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* ---------- topbar ---------- */
+
+    .topbar {
+      background: var(--ink);
+      color: rgba(255,255,255,0.78);
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.05em;
+      padding: 8px 40px;
+    }
+
+    .topbar-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      text-transform: uppercase;
+    }
+
+    /* ---------- header / nav ---------- */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      height: 56px;
+      width: auto;
+      display: block;
+      margin-left: -65px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      font-size: 1.02rem;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      border-bottom: 2px solid transparent;
+      padding-bottom: 3px;
+      transition: border-color .15s ease;
+    }
+
+    .nav-links a:hover {
+      border-color: var(--blue);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      padding: 6px;
+      cursor: pointer;
+      color: var(--ink);
+    }
+    .nav-toggle svg { width: 26px; height: 26px; display: block; }
+
+    .mobile-menu {
+      flex-direction: column;
+      padding: 8px 40px 22px;
+      border-top: 1px solid var(--line);
+      background: var(--paper);
+    }
+    .mobile-menu:not([hidden]) { display: flex; }
+    .mobile-menu a { padding: 12px 0; font-weight: 600; border-bottom: 1px solid var(--line); }
+    .mobile-menu a.btn { border-bottom: none; margin-top: 18px; }
+    .mobile-menu a.btn-primary { margin-top: 26px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 22px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 0.98rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--gradient);
+      color: #fff;
+      box-shadow: 0 10px 26px rgba(47,107,255,0.28);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.06);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline-ink {
+      border-color: var(--ink);
+      color: var(--ink);
+      background: transparent;
+    }
+
+    .btn-outline-ink:hover {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    /* ---------- legal hero ---------- */
+
+    main {
+      background: var(--paper);
+    }
+
+    .legal-hero {
+      position: relative;
+      overflow: hidden;
+      background: var(--paper);
+      color: var(--ink);
+      padding: 96px 40px 72px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .legal-hero::before {
+      content: "";
+      position: absolute;
+      top: -180px;
+      right: -160px;
+      width: 620px;
+      height: 620px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(8,145,178,0.32), transparent 68%);
+      filter: blur(6px);
+      z-index: 0;
+    }
+
+    .legal-hero::after {
+      content: "";
+      position: absolute;
+      bottom: -220px;
+      left: -180px;
+      width: 560px;
+      height: 560px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(100,35,201,0.26), transparent 70%);
+      filter: blur(6px);
+      z-index: 0;
+    }
+
+    .legal-hero-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper-2);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: var(--steel);
+      margin-bottom: 32px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gradient);
+    }
+
+    .legal-hero h1 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      line-height: 1.04;
+      letter-spacing: -1.6px;
+      max-width: 880px;
+      margin-bottom: 26px;
+    }
+
+    .legal-hero p.lead {
+      font-size: 1.15rem;
+      color: var(--steel);
+      max-width: 720px;
+    }
+
+    /* ---------- legal content ---------- */
+
+    .legal-content {
+      padding: 96px 40px;
+      background: var(--paper-2);
+    }
+
+    .legal-card {
+      max-width: 980px;
+      margin: 0 auto;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 46px;
+      box-shadow: 0 24px 60px rgba(18,21,28,0.08);
+    }
+
+    .section-kicker {
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+      display: inline-block;
+      text-transform: uppercase;
+    }
+
+    .legal-card h2 {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: 1.18rem;
+      line-height: 1.3;
+      margin: 34px 0 10px;
+      color: var(--ink);
+    }
+
+    .legal-card h2:first-of-type {
+      margin-top: 0;
+    }
+
+    .legal-card p {
+      color: var(--steel);
+      font-size: 0.98rem;
+      margin-bottom: 13px;
+    }
+
+    .legal-card ul {
+      margin: 0 0 18px 20px;
+      color: var(--steel);
+      font-size: 0.98rem;
+    }
+
+    .legal-card li {
+      margin-bottom: 8px;
+    }
+
+    .legal-card a {
+      color: var(--blue);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .back {
+      display: inline-flex;
+      margin-top: 44px;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--blue);
+      text-decoration: none !important;
+    }
+
+    .back:hover {
+      text-decoration: underline !important;
+    }
+
+    /* ---------- footer ---------- */
+
+    footer {
+      background: var(--paper);
+      color: var(--steel);
+      padding: 30px 40px;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a:hover {
+      color: var(--ink);
+    }
+
+    /* ---------- cookie banner ---------- */
+    .cookie-banner {
+      position: fixed;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      max-width: 760px;
+      margin: 0 auto;
+      background: var(--ink);
+      color: rgba(255,255,255,0.88);
+      border-radius: 14px;
+      padding: 22px 26px;
+      box-shadow: 0 24px 60px rgba(18,21,28,0.28);
+      z-index: 60;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 18px;
+      justify-content: space-between;
+    }
+    .cookie-banner:not([hidden]) { display: flex; }
+    .cookie-banner p { flex: 1 1 320px; font-size: 0.92rem; margin: 0; }
+    .cookie-banner a { color: #fff; text-decoration: underline; }
+    .cookie-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .cookie-banner .btn-outline-ink { border-color: rgba(255,255,255,0.5); color: #fff; }
+    .cookie-banner .btn-outline-ink:hover { background: rgba(255,255,255,0.12); color: #fff; }
+
+    /* ---------- accessibility tool ---------- */
+    .a11y-fab {
+      position: fixed;
+      left: 20px;
+      bottom: 20px;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: transparent;
+      border: none;
+      padding: 0;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      box-shadow: 0 14px 32px rgba(18,21,28,0.3);
+      z-index: 55;
+    }
+    .a11y-fab svg, .a11y-fab img { width: 100%; height: 100%; display: block; object-fit: cover; border-radius: 50%; }
+    .a11y-panel {
+      position: fixed;
+      left: 20px;
+      bottom: 94px;
+      width: 280px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: 0 24px 60px rgba(18,21,28,0.16);
+      padding: 20px;
+      z-index: 55;
+    }
+    .a11y-panel h2 { font-family: var(--display); font-size: 1rem; margin-bottom: 14px; }
+    .a11y-row { display: flex; align-items: center; justify-content: space-between; padding: 8px 0; border-top: 1px solid var(--line); font-size: 0.9rem; }
+    .a11y-row:first-of-type { border-top: none; }
+    .a11y-btns { display: flex; gap: 6px; }
+    .a11y-btns button, .a11y-toggle-btn {
+      border: 1px solid var(--line);
+      background: var(--paper-2);
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--ink);
+    }
+    .a11y-toggle-btn[aria-pressed="true"] { background: var(--gradient); color: #fff; border-color: transparent; }
+    .a11y-reset {
+      margin-top: 14px;
+      width: 100%;
+      border: 1px solid var(--line);
+      background: transparent;
+      border-radius: 8px;
+      padding: 8px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      color: var(--steel);
+    }
+    html.a11y-underline a { text-decoration: underline !important; }
+    html.a11y-reduce-motion * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    html.a11y-contrast { filter: contrast(1.15); }
+    html.a11y-contrast body { background: #fff !important; color: #000 !important; }
+    html.a11y-contrast a { color: #0000ee !important; }
+
+    @media (max-width: 1020px) {
+      .nav-links {
+        gap: 24px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links,
+      .nav-actions {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .brand-logo {
+        height: 40px;
+      }
+
+      .topbar {
+        padding: 8px 24px;
+      }
+
+      .nav {
+        padding: 14px 24px;
+      }
+
+      .legal-hero {
+        padding: 64px 24px 52px;
+      }
+
+      .legal-content {
+        padding: 56px 24px 80px;
+      }
+
+      .legal-card {
+        padding: 30px 22px;
+      }
+
+      footer {
+        padding: 26px 24px;
+      }
+
+      .cookie-banner { left: 12px; right: 12px; bottom: 12px; padding: 18px; }
+      .a11y-panel { left: 12px; right: 12px; width: auto; bottom: 78px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <span>Pilotify UG (i.G.) — KI, Microsoft 365 Copilot & digitale Transformation</span>
+      <span>Qualifizierung über ebizz.training</span>
+    </div>
+  </div>
+
+<header>
+  <div class="nav">
+    <a class="brand" href="index.html" aria-label="Zur Startseite">
+      <img
+        class="brand-logo"
+        src="images/pilotify_logo_gradient.png"
+        alt="Pilotify"
+        width="1800"
+        height="500">
+    </a>
+
+    <nav class="nav-links" aria-label="Hauptnavigation">
+      <a href="index.html#loesungen">Lösungen</a>
+      <a href="index.html#ansatz">Ansatz</a>
+      <a href="copilot-ready.html">Copilot Ready</a>
+      <a href="index.html#academy">Academy</a>
+      <a href="index.html#unternehmen">Unternehmen</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a class="btn btn-outline-ink"
+         href="https://ebizz.training"
+         target="_blank"
+         rel="noopener noreferrer">
+         Academy
+      </a>
+
+      <a class="btn btn-primary"
+         href="mailto:hallo@pilotify.io">
+         Kontakt
+      </a>
+    </div>
+
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileMenu">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu" hidden>
+    <a href="index.html#loesungen">Lösungen</a>
+    <a href="index.html#ansatz">Ansatz</a>
+    <a href="copilot-ready.html">Copilot Ready</a>
+    <a href="index.html#academy">Academy</a>
+    <a href="index.html#unternehmen">Unternehmen</a>
+    <a class="btn btn-outline-ink" href="https://ebizz.training" target="_blank" rel="noopener noreferrer">Academy</a>
+    <a class="btn btn-primary" href="mailto:hallo@pilotify.io">Kontakt</a>
+  </div>
+</header>
+
+  <main id="main">
+
+    <section class="legal-hero">
+      <div class="legal-hero-inner">
+        <div class="eyebrow">
+          <span class="dot"></span>
+          <span>Rechtliches · Datenschutz · Pilotify</span>
+        </div>
+
+        <h1>Datenschutz<br><span class="gradient-text">erklärung</span></h1>
+
+        <p class="lead">
+          Informationen zur Verarbeitung personenbezogener Daten bei Nutzung dieser Website
+          gemäß DSGVO, BDSG und TTDSG.
+        </p>
+      </div>
+    </section>
+
+    <section class="legal-content">
+      <div class="legal-card">
+        <div class="section-kicker">Datenschutzerklärung</div>
+
+        <h2>Wer wir sind</h2>
+        <p>
+          Die Adresse unserer Website ist: <a href="https://www.pilotify.io" target="_blank" rel="noopener noreferrer">https://www.pilotify.io</a>.
+        </p>
+        <p>
+          Verantwortlicher für die Datenverarbeitung:<br>
+          Pilotify UG (haftungsbeschränkt) i.G.<br>
+          vertreten durch Heiko Lohoff, Geschäftsführer<br>
+          Radlkoferstr. 2<br>
+          81373 München<br>
+          Deutschland
+        </p>
+        <p>
+          Kontakt: <a href="mailto:hallo@pilotify.io">hallo@pilotify.io</a>
+        </p>
+
+        <h2>Allgemeine Hinweise zur Datenverarbeitung</h2>
+        <p>
+          Die Pilotify UG (haftungsbeschränkt) i.G. nimmt den Schutz Ihrer personenbezogenen Daten ernst.
+          Ihre Daten werden im Rahmen der gesetzlichen Vorschriften (DSGVO, BDSG, TTDSG) verarbeitet.
+        </p>
+
+        <h2>Kontaktaufnahme</h2>
+        <p>
+          Wenn Sie uns kontaktieren (z. B. per E-Mail oder über den auf dieser Website eingebundenen
+          Chat-Assistenten), verarbeiten wir Ihre Daten zur Bearbeitung Ihrer Anfrage.
+        </p>
+        <p>
+          Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO sowie Art. 6 Abs. 1 lit. f DSGVO
+        </p>
+
+        <h2>Teilnehmer- und Kundendaten</h2>
+        <p>
+          Zur Durchführung von Trainings, Workshops und Webinaren im Rahmen unserer Enablement-Formate
+          verarbeiten wir Teilnehmerdaten (z. B. Name, E-Mail-Adresse, Buchungsdaten). Die Buchung kann
+          über Microsoft Bookings erfolgen, die Durchführung über Microsoft Teams.
+        </p>
+        <p>
+          Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO
+        </p>
+        <p>
+          Eine Aufzeichnung von Trainings erfolgt nur mit vorheriger Einwilligung (Art. 6 Abs. 1 lit. a DSGVO).
+        </p>
+
+        <h2>Cookies</h2>
+        <p>
+          Unsere Website verwendet Cookies. Cookies sind kleine Textdateien, die auf Ihrem Endgerät
+          gespeichert werden.
+        </p>
+        <p>
+          Technisch notwendige Cookies sind für den Betrieb der Website erforderlich und bedürfen keiner
+          Einwilligung.<br>
+          Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO, § 25 Abs. 2 TTDSG
+        </p>
+        <p>
+          Nicht notwendige Cookies (z. B. für den Chat-Assistenten oder externe Inhalte) werden nur nach
+          Ihrer Einwilligung gesetzt.<br>
+          Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TTDSG
+        </p>
+        <p>
+          Beim erstmaligen Besuch unserer Website wird ein Cookie-Banner angezeigt, über das Sie Ihre
+          Einwilligung erteilen können. Ihre Einwilligung können Sie jederzeit über den Cookie-Hinweis
+          auf unserer Website anpassen oder widerrufen.
+        </p>
+
+        <h2>Eingesetzte Drittanbieter</h2>
+        <p>
+          Auf dieser Website können Dienste von Drittanbietern eingebunden sein, insbesondere:
+        </p>
+        <ul>
+          <li>Microsoft Bookings</li>
+          <li>Microsoft Teams</li>
+          <li>Botpress (Chat-Assistent, unten rechts auf der Website)</li>
+          <li>Google Fonts (Schriftarten, eingebunden über Google-Server)</li>
+        </ul>
+        <p>
+          Diese Anbieter können eigenständig Daten verarbeiten und Cookies setzen. Der Chat-Assistent
+          (Botpress) wird erst nach Ihrer Cookie-Einwilligung geladen; ohne Einwilligung findet keine
+          Verbindung zu Botpress statt.
+        </p>
+        <p>
+          Bei der Nutzung von Microsoft-, Google- und Botpress-Diensten kann es zu einer Übermittlung
+          personenbezogener Daten in Drittländer (z. B. USA/Kanada) kommen. Microsoft und Google sind
+          unter dem EU-US Data Privacy Framework zertifiziert; für Botpress gelten die im Verarbeitungs-
+          vertrag des Anbieters vorgesehenen Garantien (u. a. EU-Standardvertragsklauseln).
+        </p>
+        <p>
+          Weitere Informationen finden Sie unter:<br>
+          <a href="https://privacy.microsoft.com/de-de/privacystatement" target="_blank" rel="noopener noreferrer">Microsoft Datenschutzerklärung</a><br>
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Datenschutzerklärung</a><br>
+          <a href="https://botpress.com/privacy" target="_blank" rel="noopener noreferrer">Botpress Datenschutzerklärung</a>
+        </p>
+
+        <h2>Eingebettete Inhalte</h2>
+        <p>
+          Eingebettete Inhalte (z. B. der Chat-Assistent oder Videos) verhalten sich so, als hätten Sie
+          die jeweilige externe Website direkt besucht. Dabei können personenbezogene Daten an die
+          jeweiligen Anbieter übermittelt werden.
+        </p>
+
+        <h2>Speicherdauer</h2>
+        <ul>
+          <li>Anfragen: ca. 6 Monate</li>
+          <li>Vertragsdaten: 6–10 Jahre (gesetzliche Aufbewahrungspflichten)</li>
+          <li>Einwilligungen: bis zum Widerruf</li>
+        </ul>
+
+        <h2>Ihre Rechte</h2>
+        <p>Sie haben folgende Rechte:</p>
+        <ul>
+          <li>Auskunft über Ihre gespeicherten Daten</li>
+          <li>Berichtigung unrichtiger Daten</li>
+          <li>Löschung Ihrer Daten</li>
+          <li>Einschränkung der Verarbeitung</li>
+          <li>Datenübertragbarkeit</li>
+          <li>Widerspruch gegen die Verarbeitung</li>
+        </ul>
+        <p>
+          Kontakt zur Wahrnehmung Ihrer Rechte: <a href="mailto:hallo@pilotify.io">hallo@pilotify.io</a>
+        </p>
+
+        <h2>Aufsichtsbehörde</h2>
+        <p>
+          Sie haben das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren.
+        </p>
+        <p>
+          Zuständige Aufsichtsbehörde:<br>
+          Bayerisches Landesamt für Datenschutzaufsicht (BayLDA)<br>
+          Promenade 18<br>
+          91522 Ansbach<br>
+          <a href="https://www.lda.bayern.de/" target="_blank" rel="noopener noreferrer">Zur Website</a>
+        </p>
+
+        <a class="back" href="index.html">← Zurück zur Startseite</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© 2026 Pilotify UG (i.G.) — KI, Copilot & digitale Transformation</div>
+      <div class="footer-links">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="agb.html">AGB</a>
+        <a href="#" id="cookieSettingsLink">Cookie-Einstellungen</a>
+        <a href="https://ebizz.training" target="_blank" rel="noopener noreferrer">ebizz.training</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="cookieBanner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen" hidden>
+    <p>
+      Wir verwenden Cookies bzw. vergleichbare Technologien, u. a. für unseren Chat-Assistenten
+      und für die Einbindung von Google-Schriftarten. Details dazu in unserer
+      <a href="datenschutz.html">Datenschutzerklärung</a>.
+    </p>
+    <div class="cookie-actions">
+      <button type="button" class="btn btn-outline-ink" id="cookieEssentialBtn">Nur notwendige</button>
+      <button type="button" class="btn btn-primary" id="cookieAcceptBtn">Alle akzeptieren</button>
+    </div>
+  </div>
+
+  <button type="button" class="a11y-fab" id="a11yToggle" aria-label="Barrierefreie Anpassungen öffnen" aria-expanded="false" aria-controls="a11yPanel">
+    <img src="images/pilotify_a11y_icon.png" alt="" width="128" height="128">
+  </button>
+
+  <div class="a11y-panel" id="a11yPanel" hidden>
+    <h2>Barrierefreie Anpassungen</h2>
+    <div class="a11y-row">
+      <span>Schriftgröße</span>
+      <div class="a11y-btns">
+        <button type="button" id="a11yFontMinus" aria-label="Schrift verkleinern">A−</button>
+        <button type="button" id="a11yFontPlus" aria-label="Schrift vergrößern">A+</button>
+      </div>
+    </div>
+    <div class="a11y-row">
+      <span>Hoher Kontrast</span>
+      <button type="button" class="a11y-toggle-btn" id="a11yContrast" aria-pressed="false">Ein/Aus</button>
+    </div>
+    <div class="a11y-row">
+      <span>Links unterstreichen</span>
+      <button type="button" class="a11y-toggle-btn" id="a11yUnderline" aria-pressed="false">Ein/Aus</button>
+    </div>
+    <div class="a11y-row">
+      <span>Bewegungen reduzieren</span>
+      <button type="button" class="a11y-toggle-btn" id="a11yMotion" aria-pressed="false">Ein/Aus</button>
+    </div>
+    <button type="button" class="a11y-reset" id="a11yReset">Zurücksetzen</button>
+  </div>
+
+  <script>
+    var navToggle = document.getElementById('navToggle');
+    var mobileMenu = document.getElementById('mobileMenu');
+    navToggle.addEventListener('click', function () {
+      var open = mobileMenu.hidden;
+      mobileMenu.hidden = !open;
+      navToggle.setAttribute('aria-expanded', open);
+    });
+    mobileMenu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mobileMenu.hidden = true;
+        navToggle.setAttribute('aria-expanded', false);
+      });
+    });
+
+    function pilotifyLoadFonts() {
+      if (document.getElementById('gfonts-link')) return;
+      var l1 = document.createElement('link'); l1.rel = 'preconnect'; l1.href = 'https://fonts.googleapis.com';
+      var l2 = document.createElement('link'); l2.rel = 'preconnect'; l2.href = 'https://fonts.gstatic.com'; l2.crossOrigin = 'anonymous';
+      var l3 = document.createElement('link'); l3.id = 'gfonts-link'; l3.rel = 'stylesheet';
+      l3.href = 'https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap';
+      document.head.appendChild(l1); document.head.appendChild(l2); document.head.appendChild(l3);
+    }
+    function pilotifyLoadChat() {
+      if (document.getElementById('bp-inject')) return;
+      var s1 = document.createElement('script'); s1.id = 'bp-inject'; s1.src = 'https://cdn.botpress.cloud/webchat/v3.7/inject.js';
+      s1.onload = function () {
+        var s2 = document.createElement('script');
+        s2.src = 'https://files.bpcontent.cloud/2025/10/18/15/20251018153832-4PMMX3GO.js';
+        s2.defer = true;
+        document.body.appendChild(s2);
+      };
+      document.body.appendChild(s1);
+    }
+
+    var banner = document.getElementById('cookieBanner');
+    var consent = localStorage.getItem('pilotify_consent');
+
+    function applyConsent(value) {
+      localStorage.setItem('pilotify_consent', value);
+      banner.hidden = true;
+      if (value === 'all') { pilotifyLoadFonts(); pilotifyLoadChat(); }
+    }
+
+    if (consent === 'all') { pilotifyLoadFonts(); pilotifyLoadChat(); }
+    else if (!consent) { banner.hidden = false; }
+
+    document.getElementById('cookieAcceptBtn').addEventListener('click', function () { applyConsent('all'); });
+    document.getElementById('cookieEssentialBtn').addEventListener('click', function () { applyConsent('essential'); });
+    document.getElementById('cookieSettingsLink').addEventListener('click', function (e) {
+      e.preventDefault();
+      banner.hidden = false;
+    });
+
+    var a11yToggle = document.getElementById('a11yToggle');
+    var a11yPanel = document.getElementById('a11yPanel');
+    var root = document.documentElement;
+    var state = JSON.parse(localStorage.getItem('pilotify_a11y') || '{}');
+    state.scale = state.scale || 100;
+
+    function saveA11y() { localStorage.setItem('pilotify_a11y', JSON.stringify(state)); }
+    function applyA11y() {
+      root.style.fontSize = state.scale + '%';
+      root.classList.toggle('a11y-contrast', !!state.contrast);
+      root.classList.toggle('a11y-underline', !!state.underline);
+      root.classList.toggle('a11y-reduce-motion', !!state.motion);
+      document.getElementById('a11yContrast').setAttribute('aria-pressed', !!state.contrast);
+      document.getElementById('a11yUnderline').setAttribute('aria-pressed', !!state.underline);
+      document.getElementById('a11yMotion').setAttribute('aria-pressed', !!state.motion);
+    }
+    applyA11y();
+
+    a11yToggle.addEventListener('click', function () {
+      var open = a11yPanel.hidden;
+      a11yPanel.hidden = !open;
+      a11yToggle.setAttribute('aria-expanded', open);
+    });
+    document.getElementById('a11yFontPlus').addEventListener('click', function () {
+      state.scale = Math.min(state.scale + 10, 150); applyA11y(); saveA11y();
+    });
+    document.getElementById('a11yFontMinus').addEventListener('click', function () {
+      state.scale = Math.max(state.scale - 10, 80); applyA11y(); saveA11y();
+    });
+    document.getElementById('a11yContrast').addEventListener('click', function () {
+      state.contrast = !state.contrast; applyA11y(); saveA11y();
+    });
+    document.getElementById('a11yUnderline').addEventListener('click', function () {
+      state.underline = !state.underline; applyA11y(); saveA11y();
+    });
+    document.getElementById('a11yMotion').addEventListener('click', function () {
+      state.motion = !state.motion; applyA11y(); saveA11y();
+    });
+    document.getElementById('a11yReset').addEventListener('click', function () {
+      state = { scale: 100 }; applyA11y(); saveA11y();
+    });
+  </script>
+
+</body>
+</html>
