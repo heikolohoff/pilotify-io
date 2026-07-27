@@ -1,0 +1,37 @@
+{
+  "routes": [
+    {
+      "route": "/impressum",
+      "rewrite": "/impressum.html"
+    },
+    {
+      "route": "/datenschutz",
+      "rewrite": "/datenschutz.html"
+    },
+    {
+      "route": "/agb",
+      "rewrite": "/agb.html"
+    },
+    {
+      "route": "/copilot-ready",
+      "rewrite": "/copilot-ready.html"
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": [
+      "/images/*",
+      "/assets/*",
+      "/*.css",
+      "/*.js",
+      "/*.png",
+      "/*.jpg",
+      "/*.jpeg",
+      "/*.svg",
+      "/*.webp",
+      "/*.ico",
+      "/*.xml",
+      "/*.txt"
+    ]
+  }
+}
