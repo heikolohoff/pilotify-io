@@ -29,7 +29,9 @@
       "/*.jpeg",
       "/*.svg",
       "/*.webp",
-      "/*.ico"
+      "/*.ico",
+      "/site.webmanifest",
+      "/*.webmanifest"
     ]
   }
 }
