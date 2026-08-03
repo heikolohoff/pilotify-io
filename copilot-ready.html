@@ -332,6 +332,64 @@
       section { padding: 60px 22px; }
       .quiz-card { padding: 22px; }
     }
+  
+    /* ---------- external link modal: Trainings -> ebizz.training ---------- */
+    .external-link-backdrop {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(10, 18, 38, 0.45);
+      z-index: 9999;
+    }
+    .external-link-backdrop.is-visible { display: flex; }
+    .external-link-dialog {
+      width: min(560px, 100%);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: 0 24px 80px rgba(15, 23, 42, 0.22);
+      padding: 32px;
+    }
+    .external-link-dialog h3 {
+      font-family: var(--display);
+      margin: 0 0 14px;
+      font-size: 1.45rem;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+    .external-link-dialog p {
+      margin: 0 0 14px;
+      color: var(--steel);
+      line-height: 1.65;
+    }
+    .external-link-dialog .modal-note {
+      font-size: 0.95rem;
+      color: var(--steel);
+    }
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 640px) {
+      .external-link-dialog {
+        padding: 24px;
+        border-radius: 22px;
+      }
+      .modal-actions {
+        flex-direction: column-reverse;
+      }
+      .modal-actions .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
   </style>
 </head>
 
@@ -357,7 +415,7 @@
         <a href="/#unternehmen">Unternehmen</a>
       </nav>
       <div class="nav-actions">
-        <a class="btn btn-outline-ink" href="https://ebizz.training/">AI-Academy</a>
+        <button type="button" class="btn btn-outline-ink" onclick="openTrainingModal()">Trainings</button>
         <a class="btn btn-primary" href="mailto:hallo@pilotify.io">Kontakt</a>
       </div>
       <button type="button" class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileMenu">
@@ -372,7 +430,7 @@
       <a href="/copilot-ready">Copilot Ready</a>
       <a href="/#academy">AI-Academy</a>
       <a href="/#unternehmen">Unternehmen</a>
-      <a class="btn btn-outline-ink" href="https://ebizz.training/">AI-Academy</a>
+      <button type="button" class="btn btn-outline-ink" onclick="openTrainingModal()">Trainings</button>
       <a class="btn btn-primary" href="mailto:hallo@pilotify.io">Kontakt</a>
     </div>
   </header>
@@ -617,7 +675,60 @@
     </div>
   </footer>
 
+  <!-- Hinweisfenster für externen Trainings-Link -->
+  <div id="training-modal" class="external-link-backdrop" aria-hidden="true">
+    <div class="external-link-dialog" role="dialog" aria-modal="true" aria-labelledby="training-modal-title">
+      <h3 id="training-modal-title">Trainings auf ebizz.training</h3>
+      <p>
+        Die Trainings- und Webinarangebote werden aktuell über ebizz.training bereitgestellt.
+        Sie verlassen dafür kurz die Pilotify-Website und öffnen die Lernplattform in einem neuen Tab.
+      </p>
+      <p class="modal-note">
+        ebizz.training ist der Trainings- und Enablement-Bereich rund um Microsoft 365 Copilot,
+        KI-Kompetenz und digitale Zusammenarbeit.
+      </p>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-outline-ink" onclick="closeTrainingModal()">Abbrechen</button>
+        <a class="btn btn-primary" href="https://ebizz.training/" target="_blank" rel="noopener noreferrer" onclick="closeTrainingModal()">ebizz.training öffnen</a>
+      </div>
+    </div>
+  </div>
+
+
   <script>
+    /* ---------- Trainings-Hinweisfenster ---------- */
+    function openTrainingModal() {
+      var modal = document.getElementById('training-modal');
+      if (modal) {
+        modal.classList.add('is-visible');
+        modal.setAttribute('aria-hidden', 'false');
+      }
+      if (typeof mobileMenu !== 'undefined' && mobileMenu) {
+        mobileMenu.hidden = true;
+      }
+      if (typeof navToggle !== 'undefined' && navToggle) {
+        navToggle.setAttribute('aria-expanded', false);
+      }
+    }
+    function closeTrainingModal() {
+      var modal = document.getElementById('training-modal');
+      if (modal) {
+        modal.classList.remove('is-visible');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+    }
+    document.addEventListener('click', function (event) {
+      var modal = document.getElementById('training-modal');
+      if (modal && event.target === modal) {
+        closeTrainingModal();
+      }
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        closeTrainingModal();
+      }
+    });
+
     function scrollToQuickCheck() {
       const target = document.getElementById('quickcheck');
       if (target) {
