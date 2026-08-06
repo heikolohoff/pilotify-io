@@ -15,6 +15,18 @@
     {
       "route": "/copilot-ready",
       "rewrite": "/copilot-ready.html"
+    },
+    {
+      "route": "/jobs",
+      "rewrite": "/jobs.html"
+    },
+    {
+      "route": "/en/jobs",
+      "rewrite": "/en/jobs.html"
+    },
+    {
+      "route": "/en",
+      "rewrite": "/en/index.html"
     }
   ],
   "navigationFallback": {
